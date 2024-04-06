@@ -1,6 +1,6 @@
 <?php
 
-$bdHost = 'localhost';
+$dbHost = 'localhost';
 $dbName = 'dbphpappvite';
 $dbUser = 'root';
 $dbPassword = '';
