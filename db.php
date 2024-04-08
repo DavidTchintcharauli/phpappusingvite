@@ -10,7 +10,19 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    if ($e->getCode() === 1049) {
+        try {
+            $pdo = new PDO("mysql:host={$dbHost}", $dbUser, $dbPassword);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            $pdo->exec("CREATE DATABASE IF NOT EXISTS {$dbName}");
+            $pdo->exec("USE {$dbName}");
+        } catch (PDOException $ex) {
+            die("Failed to create database: " . $ex->getMessage());
+        }
+    } else {
+        die("Database connection failed: " . $e->getMessage());
+    }
 }
 
 function executeQuery($query, $params = []) {
