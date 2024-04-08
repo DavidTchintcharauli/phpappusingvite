@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function UserList({ users }) {
     return (
       <div>
@@ -16,5 +18,16 @@ function UserList({ users }) {
       </div>
     );
   }
+
+  UserList.propTypes = {
+    users: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  };
+  
   
   export default UserList;

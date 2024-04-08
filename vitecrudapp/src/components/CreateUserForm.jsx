@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 function CreateUserForm({ getUsers }) {
     const [name, setName] = useState('');
@@ -62,6 +63,10 @@ function CreateUserForm({ getUsers }) {
             </form>
         </div>
     )
+}
+
+CreateUserForm.propTypes = {
+    getUsers: PropTypes.func.isRequired,
 }
 
 export default CreateUserForm;
