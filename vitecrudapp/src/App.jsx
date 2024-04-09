@@ -1,18 +1,18 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
     <Router>
       <div>
-        <Switch>
+        <Routes>
           <Route exact path="/" component={Home}/>
           <Route component={NotFound} />
-        </Switch>
+        </Routes>
       </div>
     </Router>
   )
 }
 
-export default App
+export default App;

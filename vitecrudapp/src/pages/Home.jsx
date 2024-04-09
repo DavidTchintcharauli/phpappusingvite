@@ -7,10 +7,10 @@ function Home() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        getUsers();
+        fetchAndSetUsers();
     }, []);
 
-    const getUsers = async () => {
+    const fetchAndSetUsers = async () => {
         try {
             const usersData = await fetchUsers();
             setUsers(usersData);
@@ -23,7 +23,7 @@ function Home() {
         <div>
             <h1> User List</h1>
             <UserList users={users} />
-            <CreateUserForm getUsers={getUsers} />    
+            <CreateUserForm getUsers={fetchAndSetUsers} />    
         </div>
     );
 }

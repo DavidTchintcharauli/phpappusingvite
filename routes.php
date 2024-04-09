@@ -1,8 +1,8 @@
 <?php
-require_once 'controllers/usersController.php';
+require_once 'controllers/UserController.php';
 
 $routes = [
-    '/api/users' => 'usersController.php',
+    '/api/users' => 'UserController::getUsers',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
